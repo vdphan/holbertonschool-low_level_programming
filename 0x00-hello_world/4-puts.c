@@ -2,7 +2,7 @@
 /**
  *main - entry point
  *use put to print a statement
- *return: alwayls 0 (success)
+ *Return: alwayls 0 (success)
  */
 int main(void)
 {
