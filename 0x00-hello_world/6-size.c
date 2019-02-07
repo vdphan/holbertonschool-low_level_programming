@@ -8,7 +8,7 @@
  *floatsize: fifth variable
  *Return: alwayls 0 (success)
  */
-int main()
+int main(void)
 {
 	char charsize;
 	int integersize;
@@ -18,10 +18,10 @@ int main()
 	/**
 	 *Sizeof operator is used to evaluate the size of a variable
 	 */
-	printf("Size of char: %d byte\n",sizeof(charsize));
-	printf("Size of int: %d bytes\n",sizeof(integersize));
-	printf("Size of int: %ld bytes\n",sizeof(longint));
-	printf("Size of int: %lld bytes\n",sizeof(longlongint));
-	printf("Size of float: %f bytes\n",sizeof(floatsize));
+	printf("Size of char: %d byte\n", sizeof(charsize));
+	printf("Size of int: %d bytes\n", sizeof(integersize));
+	printf("Size of int: %ld bytes\n", sizeof(longint));
+	printf("Size of int: %lld bytes\n", sizeof(longlongint));
+	printf("Size of float: %f bytes\n", sizeof(floatsize));
 	return (0);
 }
