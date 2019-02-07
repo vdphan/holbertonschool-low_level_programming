@@ -10,18 +10,13 @@
  */
 int main(void)
 {
-	char charsize;
-	int integersize;
-	long int longint;
-	long long int longlongint;
-	float floatsize;
 	/**
 	 *Sizeof operator is used to evaluate the size of a variable
 	 */
-	printf("Size of char: %d byte(s)\n", sizeof(charsize));
-	printf("Size of int: %d bytes(s)\n", sizeof(integersize));
-	printf("Size of long int: %ld bytes(s)\n", sizeof(longint));
-	printf("Size of long long int: %lld bytes(s)\n", sizeof(longlongint));
-	printf("Size of float: %ld bytes(s)\n", sizeof(floatsize));
+	printf("Size of char: %d byte(s)\n", sizeof(char));
+	printf("Size of int: %d bytes(s)\n", sizeof(int));
+	printf("Size of long int: %ld bytes(s)\n", sizeof(long int));
+	printf("Size of long long int: %ld bytes(s)\n", sizeof(long long int));
+	printf("Size of float: %ld bytes(s)\n", sizeof(float));
 	return (0);
 }
