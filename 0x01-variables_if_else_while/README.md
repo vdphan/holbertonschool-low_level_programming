@@ -1,0 +1,1 @@
+This project is about learning loop in C, and how we use if, while statement.
