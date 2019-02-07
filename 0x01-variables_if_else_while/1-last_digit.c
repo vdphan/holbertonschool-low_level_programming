@@ -6,7 +6,8 @@
 /**
  *main - entry point
  *n: random number
- *use if else statement to determine if n is proistive, negative, or zero.
+ *use if else statement
+ *if n is >5, 0, <6 or not zero.
  *Return: alwayls 0 (success)
  */
 int main(void)
