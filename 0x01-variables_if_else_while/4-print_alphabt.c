@@ -1,7 +1,7 @@
 #include <stdio.h>
 /**
  *main - entry point
- *use putchar to print alphabet
+ *use putchar to print alphabet except q and e
  *Return: alwayls 0 (success)
  */
 int main(void)
@@ -10,7 +10,7 @@ int main(void)
 
 	for (i = 'a' ; i <= 'z' ; i++)
 	{
-		if((i != 'q') && (i != 'e'))
+		if ((i != 'q') && (i != 'e'))
 		{
 			putchar(i);
 		}
