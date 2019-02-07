@@ -1,11 +1,11 @@
 #include <stdio.h>
 /**
  *main - entry point
- *charsize: first variable
- *integersize: second variable
+ *char: first variable
+ *int: second variable
  *longint: third variable
  *longlongint: fourth variable
- *floatsize: fifth variable
+ *float: fifth variable
  *Return: alwayls 0 (success)
  */
 int main(void)
