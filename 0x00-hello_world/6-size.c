@@ -1,4 +1,4 @@
-gcc 6-size.c -m64 -o size64 2> /tmp/64#include <stdio.h>
+#include <stdio.h>
 /**
  *main - entry point
  *char: first variable
