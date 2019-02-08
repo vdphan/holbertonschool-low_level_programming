@@ -1,7 +1,7 @@
 #include <stdio.h>
 /**
  *main - entry point
- *use putchar to print alphabet
+ *use putchar to print commbination of command.
  *Return: alwayls 0 (success)
  */
 int main(void)
@@ -13,8 +13,8 @@ int main(void)
 		putchar(i);
 		if (i < '9')
 		{
-			putchar(' ');
 			putchar(',');
+			putchar(' ');
 		}
 	}
 	putchar('\n');
