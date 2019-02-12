@@ -1,7 +1,7 @@
 #include "holberton.h"
 /**
- *
- *
+ *print all the alphabet
+ *void: a function does not return a value
  */
 void print_alphabet(void)
 {
