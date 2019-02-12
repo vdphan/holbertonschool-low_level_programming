@@ -1,9 +1,8 @@
 #include "holberton.h"
 /**
- *print_last_digit - print last digit of number
- *@r : passed value
+ *jack_bauer - print every minute of the day
  *
- *Return: execute last digit
+ *void: a function does not return a value
  */
 void jack_bauer(void)
 {
