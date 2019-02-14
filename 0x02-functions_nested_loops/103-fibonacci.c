@@ -9,21 +9,20 @@ int main(void)
 {
 	long i = 1;
 	long j = 2;
-	int a;
 	long b;
-	long c;
+	long c = 2;
 
-	for (a = 1; a <= 50; a++)
+	while ((i + j) <= 4000000)
 	{
 		b = i + j;
 		i = j;
 		j = b;
-		if ((b <= 4000000) && ((b % 2) == 0) && (b != 2))
+		if ((b % 2) == 0)
 		{
-			c = j + b;
+		c = c + b;
 		}
 	}
 	printf("%ld", c);
 	printf("\n");
 	return (0);
-}
+	}
