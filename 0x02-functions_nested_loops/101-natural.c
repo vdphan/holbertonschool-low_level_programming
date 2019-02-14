@@ -1,14 +1,13 @@
 #include <stdio.h>
 #include "holberton.h"
 /**
- *print_to_98 - print every minute of the day
- *@n : integer value
+ *main - entry function
  *
  *Return: return 0 (success)
  */
 int main(void)
 {
-	unsigned int i;
+	int i;
 	int j = 0;
 
 	for (i = 0; i < 1024; i++)
