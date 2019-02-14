@@ -28,7 +28,7 @@ void print_times_table(int n)
 {
 	int i, j;
 
-	if ((n <= 15) && (n >= 0))
+	if (n <= 15)
 	{
 		for (i = 0; i <= n; i++)
 		{
@@ -57,7 +57,7 @@ void print_times_table(int n)
 					print_two(i, j);
 				else
 					_putchar((j * i) % 10 + '0');
-				if ((((j * i) % n) == 0) && (j == n) && (i < n))
+				if ((j == n) && (i < n))
 					_putchar('\n');
 			}
 		}
