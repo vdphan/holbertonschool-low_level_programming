@@ -1,9 +1,9 @@
 #include "holberton.h"
 /**
- * main - check the code for Holberton School students.
+ * _atoi - convert string to integer.
  *@s : character value.
  *
- * Return: Always 0.
+ * Return: n.
  */
 int _atoi(char *s)
 {
@@ -18,8 +18,8 @@ int _atoi(char *s)
 		if (s[i] == '-')
 			test = -test;
 		if (s[i] >= '0' && s[i] <= '9')
-			n = (10 * n) + test*(s[i] - '0');
-		else if(n)
+			n = (10 * n) + test * (s[i] - '0');
+		else if (n)
 			break;
 	}
 	return (n);
