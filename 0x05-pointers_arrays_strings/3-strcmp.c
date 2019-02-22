@@ -1,8 +1,8 @@
 #include "holberton.h"
 /**
- * _strcmp -  a function that compare the string.
- * @s1 : character value
- * @s2  : character value
+ * _strcmp - a function that compare the string.
+ * @s1: character value
+ * @s2: character value
  *
  *Return: 0.
  */
