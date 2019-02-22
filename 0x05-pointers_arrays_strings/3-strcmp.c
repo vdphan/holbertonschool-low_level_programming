@@ -18,7 +18,7 @@ int _strcmp(char *s1, char *s2)
 			i++;
 			j++;
 		}
-		if ((s1[i] != s2[j]) || (*s1 == *s2))
+		else if (s1[i] != s2[j])
 		{
 			k = s1[i] - s2[j];
 			break;
