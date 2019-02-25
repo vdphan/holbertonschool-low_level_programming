@@ -4,7 +4,7 @@
  *@s: string character value.
  *@c: character value.
  *
- * Return: string value.
+ * Return: new string value.
  */
 char *_strchr(char *s, char c)
 {
