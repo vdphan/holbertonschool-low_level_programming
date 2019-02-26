@@ -2,7 +2,7 @@
 /**
  *_strstr -  gets the length of a prefix substring.
  *@haystack: string character value.
- *@needle: character value.
+ *@needle: string character value.
  *
  * Return: 0.
  */
