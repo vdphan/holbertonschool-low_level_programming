@@ -1,4 +1,4 @@
-#include "holberton.h"
+ #include "holberton.h"
 /**
  *_strstr -  gets the length of a prefix substring.
  *@haystack: string character value.
@@ -17,12 +17,12 @@ char *_strstr(char *haystack, char *needle)
 	{
 		if (haystack[i] == needle[0])
 		{
-			for (j = 0; needle[j] != '\0'; j++)
+			for (j = 0; needle[j] != '\0'; j++, i++)
 			{
-				if (haystack[i] == needle[j])
-					return (haystack + i);
+				haystack[i] = needle[j];
+				return (haystack + i);
 			}
 		}
 	}
-	return(0);
+	return (0);
 }
