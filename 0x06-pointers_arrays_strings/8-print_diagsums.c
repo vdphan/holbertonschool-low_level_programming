@@ -15,10 +15,10 @@ void print_diagsums(int *a, int size)
 
 	for (i = 0; i < size; i++)
 	{
-		if (i < (size - 1))
+		while (d < size * size)
 		{
-			d = d + size + 1;
 			b = b + a[d];
+			d = d + size + 1;
 		}
 		e = e + size - 1;
 		c = c + a[e];
