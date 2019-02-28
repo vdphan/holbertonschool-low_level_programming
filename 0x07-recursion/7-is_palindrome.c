@@ -28,7 +28,7 @@ int _strlen_recursion(char *s)
 int palindromehelp(char *s, int i, int j)
 {
 	j = _strlen_recursion(s) - 1;
-	if ((s[i] != s[j]) || j < 1)
+	if ((s[i] != s[j]) || j < 0)
 		return (0);
 	else if (s[i] == s[j])
 		return (1);
