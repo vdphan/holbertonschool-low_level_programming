@@ -7,7 +7,7 @@
  *@argc: integer value count of the arguments supplied to the program.
  *@argv: character value an array of pointers to the strings.
  *
- *Return: 0(success)
+ *Return: 1 if the program does not receive two arguments.
  */
 int main(int argc, char *argv[])
 {
@@ -15,10 +15,9 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		printf("error\n");
+		printf("Error\n");
 		return (1);
 	}
-	if (argv[1] != '\0' || argv != '\0')
-		printf("%d\n", atoi(argv[1]) * atoi(argv[2]));
+	printf("%d\n", atoi(argv[1]) * atoi(argv[2]));
 	return (0);
 }
