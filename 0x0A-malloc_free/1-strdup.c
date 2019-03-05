@@ -9,11 +9,19 @@
  */
 char *_strdup(char *str)
 {
+	unsigned int i;
 	char *s;
 
 	if (str == NULL)
 		return (NULL);
-	s = malloc(sizeof(char) * strlen(str));
-	strcpy(s, str);
+	for (i = 0; str[i] != 0; i++)
+		;
+	s = malloc(sizeof(char) * i);
+	if (s != NULL)
+	{
+		for (i = 0; str[i] != 0; i++)
+			s[i] = str[i];
+	}
+	s[i] = '\0';
 	return (s);
 }
