@@ -1,6 +1,6 @@
 #include "holberton.h"
-#include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 /**
  * _strdup - create an array with special charcter.
  * @str: chacter value.
@@ -16,6 +16,7 @@ char *_strdup(char *str)
 		return (NULL);
 	for (i = 0; str[i] != 0; i++)
 		;
+	i = i + 1;
 	s = malloc(sizeof(char) * i);
 	if (s != NULL)
 	{
