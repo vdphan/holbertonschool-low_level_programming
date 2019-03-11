@@ -1,11 +1,18 @@
-#include "dog.h"
+#ifndef DOG_H
+#define DOG_H
 
 /**
- * free_dog -
+ * struct dog - a new type struct dog.
+ * @name: character value.
+ * @age: float value.
+ * @owner: character value.
  *
- * Return: 
  */
-void free_dog(dog_t *d)
+struct dog
 {
+	char *name;
+	float age;
+	char *owner;
+};
 
-}
+#endif
