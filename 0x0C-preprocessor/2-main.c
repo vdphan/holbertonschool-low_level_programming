@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include "holberton.h"
 /**
  * main - entry point.
  *
@@ -9,4 +7,5 @@
 int main(void)
 {
 	printf("%s\n", __BASE_FILE__);
+	return (0);
 }
