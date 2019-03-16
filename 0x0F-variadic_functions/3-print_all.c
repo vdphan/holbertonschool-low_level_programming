@@ -46,7 +46,7 @@ void test_string(va_list pr)
  */
 void print_all(const char * const format, ...)
 {
-	op_t opsj[] = {
+	op_t ops[] = {
 		{"c", test_char},
 		{"i", test_integer},
 		{"f", test_float},
