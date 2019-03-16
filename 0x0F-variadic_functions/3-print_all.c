@@ -46,7 +46,7 @@ void test_string(va_list pr)
  */
 void print_all(const char * const format, ...)
 {
-	op_t ops[] = {
+	op_t opsj[] = {
 		{"c", test_char},
 		{"i", test_integer},
 		{"f", test_float},
@@ -59,7 +59,7 @@ void print_all(const char * const format, ...)
 	char *sep = "";
 
 	va_start(pr, format);
-	while (format[i] && format)
+	while (format && format[i])
 	{
 		j = 0;
 		while (ops[j].op)
