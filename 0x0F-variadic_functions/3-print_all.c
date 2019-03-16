@@ -40,7 +40,7 @@ void test_string(va_list pr)
 }
 /**
  * print_all -  prints anything.
- * @format: format type.
+ * @format: format type of arg.
  *
  * Return: Nothing.
  */
@@ -55,7 +55,7 @@ void print_all(const char * const format, ...)
 	};
 	va_list pr;
 	int i = 0;
-	int j;
+	int j = 0;
 	char *sep = "";
 
 	va_start(pr, format);
