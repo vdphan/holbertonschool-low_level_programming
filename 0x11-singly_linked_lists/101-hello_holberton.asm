@@ -1,4 +1,3 @@
-extern printf
 	SECTION .data
 msg:	    db "Hello, Holberton", 0
 fmt:	    db "%s", 10, 0
@@ -7,12 +6,12 @@ fmt:	    db "%s", 10, 0
 	        extern printf
 	        global main
 main:
-	        mov esi, msg    ; 64-bit ABI passing order starts w/ edi, esi, ...
-	        mov edi, fmt    ;
-	        mov eax, 0      ; printf is varargs, so EAX counts # of non-integer arguments being passed
+	        mov esi, msg
+	        mov edi, fmt
+	        mov eax, 0
 	        call printf
 
 
-	        mov ebx, 0      ; normal-exit code
-	        mov eax, 1      ; process-termination service
-	        int 0x80        ; linux kernel service
+	        mov ebx, 0
+	        mov eax, 1
+	        int 0x80
