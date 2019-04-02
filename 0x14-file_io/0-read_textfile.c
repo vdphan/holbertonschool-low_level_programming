@@ -28,13 +28,13 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		free(c);
 		return (0);
 	}
-	c[letters] = '\0';
 	w = write(STDOUT_FILENO, c, r);
 	if (w == -1)
 	{
 		free(c);
 		return (0);
 	}
-	return (w);
+	free(c);
 	close(fd);
+	return (w);
 }
