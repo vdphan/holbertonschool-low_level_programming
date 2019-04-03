@@ -8,7 +8,7 @@
  */
 int main(int argc, char **argv)
 {
-	char buf[BUFSIZ];
+	char buf[1024];
 	int a, file1, file2;
 
 	if (argc != 3)
@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Error: Can't write to %s", argv[2]);
 		exit(99);
 	}
-	a = read(file1, buf, BUFSIZ);
+	a = read(file1, buf, 1024);
 	while (a > 0)
 	{
 		if (write(file2, buf, a) != a)
@@ -36,11 +36,11 @@ int main(int argc, char **argv)
 			dprintf(STDERR_FILENO, "Error: Can't write to %s", argv[2]);
 			exit(99);
 		}
-		a = read(file1, buf, BUFSIZ);
+		a = read(file1, buf, 1024);
 	}
 	if (close(file2))
-		dprintf(STDOUT_FILENO, "Error: Can't close fd FD_VALUE, followed by a new line, on the POSIX standard error"), exit(100);
+		dprintf(STDERR_FILENO, "Error: Can't close fd FD_VALUE, followed by a new line, on the POSIX standard error"), exit(100);
 	if (close(file1))
-		dprintf(STDOUT_FILENO, "Error: Can't close fd FD_VALUE, followed by a new line, on the POSIX standard error"), exit(100);
+		dprintf(STDERR_FILENO, "Error: Can't close fd FD_VALUE, followed by a new line, on the POSIX standard error"), exit(100);
 	return (0);
 }
