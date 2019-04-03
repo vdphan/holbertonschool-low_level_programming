@@ -1,0 +1,46 @@
+#include "holberton.h"
+/**
+ *main - entry point.
+ *@argc: number of argument
+ *@argv: character value an array of pointers to the strings.
+ *
+ *Return: 0 if success.
+ */
+int main(int argc, char **argv)
+{
+	char buf[BUFSIZ];
+	int a, file1, file2;
+
+	if (argc != 3)
+	{
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to");
+		exit(97);
+	}
+	file1 = open(argv[1], O_RDONLY);
+	if (file1 == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s", argv[1]);
+		exit(98);
+	}
+	file2 = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	if (file2 == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s", argv[2]);
+		exit(99);
+	}
+	a = read(file1, buf, BUFSIZ);
+	while (a > 0)
+	{
+		if (write(file2, buf, a) != a)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s", argv[2]);
+			exit(99);
+		}
+		a = read(file1, buf, BUFSIZ);
+	}
+	if (close(file2))
+		dprintf(STDOUT_FILENO, "Error: Can't close fd FD_VALUE, followed by a new line, on the POSIX standard error"), exit(100);
+	if (close(file1))
+		dprintf(STDOUT_FILENO, "Error: Can't close fd FD_VALUE, followed by a new line, on the POSIX standard error"), exit(100);
+	return (0);
+}
