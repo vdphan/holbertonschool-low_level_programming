@@ -12,10 +12,7 @@ int main(int argc, char **argv)
 	int a, file1, file2;
 
 	if (argc != 3)
-	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		exit(97);
-	}
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"), exit(97);
 	file1 = open(argv[1], O_RDONLY);
 	if (file1 == -1)
 	{
@@ -38,9 +35,14 @@ int main(int argc, char **argv)
 		}
 		a = read(file1, buf, 1024);
 	}
+	if (a == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
 	if (close(file2))
-		dprintf(STDERR_FILENO, "Error: Can't close fd FD_VALUE, followed by a new line, on the POSIX standard error\n"), exit(100);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file2), exit(100);
 	if (close(file1))
-		dprintf(STDERR_FILENO, "Error: Can't close fd FD_VALUE, followed by a new line, on the POSIX standard error\n"), exit(100);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file1), exit(100);
 	return (0);
 }
