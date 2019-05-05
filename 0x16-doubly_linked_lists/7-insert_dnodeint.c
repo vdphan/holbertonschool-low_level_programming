@@ -2,7 +2,7 @@
 #include "lists.h"
 
 /**
- * dlistint_len - calculate double linked list len.
+ * len - calculate double linked list len.
  * @h:  pointer to head.
  *
  * Return: returns the number of elements in a linked dlistint_t list.
@@ -32,8 +32,6 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	dlistint_t *new;
 	unsigned int c = 0;
 
-	if (!h)
-		return (NULL);
 	new = malloc(sizeof(dlistint_t));
 	if (!new)
 		return (NULL);
