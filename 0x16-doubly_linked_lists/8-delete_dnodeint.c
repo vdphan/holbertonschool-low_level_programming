@@ -1,4 +1,23 @@
 #include "lists.h"
+#include "lists.h"
+
+/**
+ * dlistint_len - calculate double linked list len.
+ * @h:  pointer to head.
+ *
+ * Return: returns the number of elements in a linked dlistint_t list.
+ */
+size_t len(const dlistint_t *h)
+{
+	int count = 0;
+
+	while (h)
+	{
+		h = h->next;
+		count++;
+	}
+	return (count);
+}
 
 /**
  * delete_dnodeint_at_index - deletes the node at index.
@@ -10,12 +29,12 @@
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
 	dlistint_t *tmp = *head;
-	dlistint_t *hold;
+	dlistint_t *hold = NULL;
 	unsigned int count = 0;
 
 	if (!*head)
 		return (-1);
-	if (index == 0)
+	if (index == 0 && len(*head) > 0)
 	{
 		*head = tmp->next;
 		free(tmp);
