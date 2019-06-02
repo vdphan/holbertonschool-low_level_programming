@@ -15,6 +15,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	if (!ht || !key || !*key || !*value)
 		return (0);
+	i = key_index((unsigned char *)key, ht->size);
 	tmp = ht->array[i];
 	for (; tmp; tmp = tmp->next)
 	{
