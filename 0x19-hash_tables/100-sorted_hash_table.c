@@ -1,5 +1,10 @@
 #include "hash_tables.h"
-
+/**
+ * shash_table_create - a function that creates a hash table.
+ * @size: the size of the array.
+ *
+ * Return: a pointer to the newly created hash table.
+ */
 shash_table_t *shash_table_create(unsigned long int size)
 {
 	shash_table_t *new;
@@ -18,7 +23,14 @@ shash_table_t *shash_table_create(unsigned long int size)
 	new->size = size;
 	return (new);
 }
-
+/**
+ * shash_table_set - adds an element to the hash table.
+ * @ht: the hash table you want to add or update the key/value to.
+ * @key: is the key.
+ * @value: the value associated with the key.
+ *
+ * Return: 1 if it succeeded, 0 otherwise.
+ */
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	shash_node_t *cur = NULL, *tmp = NULL;
@@ -60,7 +72,13 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	php_sort(ht, cur);
 	return (1);
 }
-
+/**
+ * php_sort - inserts sorted  elements to doubly linked list
+ * @ht: pointer to a pointer that points to a struct of type shash_table_t
+ * @cur: node that needs to insert.
+ *
+ * Return: 1 if it succeeded, 0 otherwise
+ */
 int php_sort(shash_table_t *ht, shash_node_t *cur)
 {
 	shash_node_t *newt, *prv;
@@ -79,7 +97,7 @@ int php_sort(shash_table_t *ht, shash_node_t *cur)
 		prv = newt->sprev;
 		if (strcmp(newt->key, cur->key) > 0)
 		{
-			if (newt->snext == NULL)
+			if (newt->sprev == NULL)
 			{
 				cur->snext = newt;
 				newt->sprev = cur;
@@ -90,7 +108,7 @@ int php_sort(shash_table_t *ht, shash_node_t *cur)
 			newt->sprev = cur;
 			cur->snext = newt;
 			cur->sprev = prv;
-			return(1);
+			return (1);
 		}
 		prv = newt;
 		newt = newt->snext;
@@ -100,7 +118,13 @@ int php_sort(shash_table_t *ht, shash_node_t *cur)
 	ht->stail = cur;
 	return (1);
 }
-
+/**
+ * shash_table_get - a function that retrieves a value associated with a key.
+ * @ht: the hash table you want to look into.
+ * @key: the key you are looking for.
+ *
+ * Return: the value associated with the element, or NULL.
+ */
 char *shash_table_get(const shash_table_t *ht, const char *key)
 {
 	shash_node_t *node = NULL;
@@ -118,7 +142,10 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 	}
 	return (NULL);
 }
-
+/**
+ * shash_table_print - a function that prints a hash table.
+ * @ht: hash table.
+ */
 void shash_table_print(const shash_table_t *ht)
 {
 	int flag = 0;
@@ -139,7 +166,10 @@ void shash_table_print(const shash_table_t *ht)
 		printf("}\n");
 	}
 }
-
+/**
+ * shash_table_print_rev - a function that prints a hash table in reverse.
+ * @ht: hash table.
+ */
 void shash_table_print_rev(const shash_table_t *ht)
 {
 	int flag = 0;
@@ -160,7 +190,10 @@ void shash_table_print_rev(const shash_table_t *ht)
 		printf("}\n");
 	}
 }
-
+/**
+ * shash_table_delete - a function that deletes a hash table.
+ * @ht: hash table.
+ */
 void shash_table_delete(shash_table_t *ht)
 {
 	unsigned int i = 0;
