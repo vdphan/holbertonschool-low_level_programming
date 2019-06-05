@@ -39,7 +39,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 			return (1);
 		}
 	}
-	cur = malloc(sizeof(hash_node_t));
+	cur = malloc(sizeof(shash_node_t));
 	if (!cur)
 		return (0);
 	cur->key = strdup(key);
@@ -63,41 +63,41 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 
 int php_sort(shash_table_t *ht, shash_node_t *cur)
 {
-	shash_node_t *newt;
+	shash_node_t *newt, *prv;
 
+	cur->sprev = NULL;
+	cur->snext = NULL;
 	if (!ht->shead)
 	{
 		ht->shead = cur;
 		ht->stail = cur;
-		cur->sprev = NULL;
-		cur->snext = NULL;
 		return (1);
 	}
 	newt = ht->shead;
 	while (newt)
 	{
-		if (strcmp(newt->key, cur->key) < 0)
+		prv = newt->sprev;
+		if (strcmp(newt->key, cur->key) > 0)
 		{
-			cur->snext = newt->next;
-			if (newt->snext)
-				newt->snext->sprev = cur;
-			newt->snext = cur;
-			cur->sprev = newt;
-		}
-		else
-		{
-			if (newt->sprev == NULL)
+			if (newt->snext == NULL)
 			{
-				cur->sprev = newt->sprev;
-				newt->sprev = cur;
 				cur->snext = newt;
+				newt->sprev = cur;
+				newt = cur;
+				return (1);
 			}
+			prv->snext = cur;
+			newt->sprev = cur;
+			cur->snext = newt;
+			cur->sprev = prv;
+			return(1);
 		}
-		if (newt->next == NULL)
-			break;
+		prv = newt;
 		newt = newt->snext;
 	}
-	ht->stail = newt;
+	prv->snext = cur;
+	cur->sprev = prv;
+	ht->stail = cur;
 	return (1);
 }
 
@@ -134,7 +134,7 @@ void shash_table_print(const shash_table_t *ht)
 				printf(", ");
 			printf("'%s': '%s'", node->key, node->value);
 			flag = 1;
-			node = node->next;
+			node = node->snext;
 		}
 		printf("}\n");
 	}
