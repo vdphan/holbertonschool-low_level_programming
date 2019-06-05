@@ -91,19 +91,19 @@ int php_sort(shash_table_t *ht, shash_node_t *cur)
 		ht->stail = cur;
 		return (1);
 	}
+	if (strcmp(ht->shead->key, cur->key) > 0 && ht->shead->sprev == NULL)
+	{
+		cur->snext = ht->shead;
+		ht->shead->sprev = cur;
+		ht->shead = cur;
+		return (1);
+	}
 	newt = ht->shead;
 	while (newt)
 	{
 		prv = newt->sprev;
 		if (strcmp(newt->key, cur->key) > 0)
 		{
-			if (newt->sprev == NULL)
-			{
-				cur->snext = newt;
-				newt->sprev = cur;
-				newt = cur;
-				return (1);
-			}
 			prv->snext = cur;
 			newt->sprev = cur;
 			cur->snext = newt;
