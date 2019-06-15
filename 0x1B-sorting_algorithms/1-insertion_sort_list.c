@@ -2,61 +2,58 @@
 
 /**
  * insertion_sort_list - sorts a doubly linked list of interger
- *  using the Insertion sort
+ * using the Insertion sort
  * @list: pointer to the pointer that points to list.
  *
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *curr = *list;
-	listint_t *p, *p2, *n, *n2, *tmp;
+	listint_t *tmp, *last, *curr = *list;
 
-	while (curr)
+	while (curr && curr->next)
 	{
-		if (!curr->next)
-			return;
-		if (curr->next->n < curr->n)
+		if (curr->n > curr->next->n)
 		{
-			p = curr->prev;
-			n = curr->next;
-			n2 = curr->next->next;
-			p->next = n;
-			n->prev = p;
-			curr->next = n2;
-			if (n2)
-				n2->prev = curr;
-			n->next = curr;
-			curr->prev = n;
+			swap_ll(curr, curr->next, list);
+			last = curr;
 			curr = curr->prev;
-			print_list(*list);
-			while (curr)
+			while (curr && curr->prev)
 			{
 				tmp = curr;
-				if (!tmp->prev)
-					break;
 				if (tmp->n < tmp->prev->n)
-				{
-					p = tmp->prev;
-					n = tmp->next;
-					p2 = curr->prev->prev;
-					p->next = n;
-					n->prev = p;
-					tmp->prev = p2;
-					if (p2)
-						p2->next = tmp;
-					else
-						*list = tmp;
-					tmp->prev = p2;
-					tmp->next = p;
-					p->prev = tmp;
-					tmp = p;
-					print_list(*list);
-				}
+					swap_ll(tmp->prev, tmp, list);
 				else
 					break;
 			}
-		}
-		curr = curr->next;
-
+			curr = last;
+		} else
+			curr = curr->next;
 	}
+}
+
+
+/**
+ *swap_ll - swaps value between 2 nodes in doubly linked lists.
+ *@left: pointer of doubly linked lists.
+ *@right: pointer of doubly linked lists.
+ *@list: pointer of doubly linked lists.
+ */
+void swap_ll(listint_t *left, listint_t *right, listint_t **list)
+{
+	listint_t *p, *n;
+
+	p = left->prev;
+	n = right->next;
+	if (p)
+		p->next = right;
+	else
+		*list = right;
+	if (n)
+		n->prev = left;
+	right->prev = p;
+	left->next = n;
+
+	right->next = left;
+	left->prev = right;
+	print_list(*list);
 }
