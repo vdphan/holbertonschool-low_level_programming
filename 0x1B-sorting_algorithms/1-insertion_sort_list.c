@@ -8,10 +8,11 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *tmp, *last, *curr = *list;
+	listint_t *tmp, *last, *curr;
 
 	if (!list || !*list)
 		return;
+	curr = *list;
 	while (curr && curr->next)
 	{
 		if (curr->n > curr->next->n)
