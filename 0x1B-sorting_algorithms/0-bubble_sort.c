@@ -1,14 +1,17 @@
 #include "sort.h"
 
 /**
- * bubble_sort -
- *
- * Return: 
+ * bubble_sort - sorts an array of integers using the Bubble sort algorithm
+ * @array: array of integer:
+ * @size: size of the array.
  */
 void bubble_sort(int *array, size_t size)
 {
 	register unsigned int i;
 	_Bool sorted = true;
+
+	if (!array || size < 2)
+		return;
 
 	while (sorted)
 	{
@@ -25,7 +28,11 @@ void bubble_sort(int *array, size_t size)
 	}
 }
 
-
+/**
+ *swap -  swap value of 2 array index:
+ *@a: value at element a.
+ *@b: value at element b.
+ */
 void swap(int *a, int *b)
 {
 	int tmp = *a;

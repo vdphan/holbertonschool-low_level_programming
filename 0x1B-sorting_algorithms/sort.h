@@ -36,6 +36,6 @@ void quick_sort_hoare(int *array, size_t size);
 void swap(int *a, int *b);
 void print_list(const listint_t *list);
 void print_array(const int *array, size_t size);
-
+void swap_ll(listint_t *left, listint_t *right, listint_t **list);
 
 #endif /* SORT_H */

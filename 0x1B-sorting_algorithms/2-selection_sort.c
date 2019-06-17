@@ -1,9 +1,9 @@
 #include "sort.h"
 
 /**
- * selection_sort -
- *
- * Return: 
+ * selection_sort - sortng using selection method.
+ * @array: array of integer.
+ * @size: size of the array.
  */
 void selection_sort(int *array, size_t size)
 {
@@ -25,6 +25,11 @@ void selection_sort(int *array, size_t size)
 	}
 }
 
+/**
+ *swap - swap value between 2 array index.
+ *@a: array index a.
+ *@b: array index b.
+ */
 void swap(int *a, int *b)
 {
 	int tmp = *a;
