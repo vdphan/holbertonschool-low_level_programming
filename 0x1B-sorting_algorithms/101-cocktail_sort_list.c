@@ -9,7 +9,7 @@ void cocktail_sort_list(listint_t **list)
 	listint_t *start = NULL, *end = NULL;
 	_Bool sorted = true;
 
-	if (!*list || !list)
+	if (!list || !*list)
 		return;
 	start = *list;
 	while (sorted)
