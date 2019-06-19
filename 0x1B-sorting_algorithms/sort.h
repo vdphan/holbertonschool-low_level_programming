@@ -37,5 +37,10 @@ void swap(int *a, int *b);
 void print_list(const listint_t *list);
 void print_array(const int *array, size_t size);
 void swap_ll(listint_t *left, listint_t *right, listint_t **list);
+void qs(int arr[], int low, int high, size_t size);
+int partition(int arr[], int low, int high, size_t size);
+
+void ms(int *array, int *inner, int start, int end);
+void merge(int *array, int *inner, int start, int mid, int end);
 
 #endif /* SORT_H */
