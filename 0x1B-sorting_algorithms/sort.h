@@ -43,4 +43,6 @@ int partition(int arr[], int low, int high, size_t size);
 void ms(int *array, int *inner, int start, int end);
 void merge(int *array, int *inner, int start, int mid, int end);
 
+void heapify(int arr[], int n, int i, size_t size);
+
 #endif /* SORT_H */
