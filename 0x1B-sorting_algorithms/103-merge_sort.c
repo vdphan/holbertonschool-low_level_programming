@@ -64,6 +64,11 @@ void merge_sort(int *array, size_t size)
 {
 	int *inner;
 
+	if (!array || size < 2)
+		return;
 	inner = malloc(sizeof(int) * size);
+	if (!inner)
+		return;
 	ms(array, inner, 0, size);
+	free(inner);
 }
