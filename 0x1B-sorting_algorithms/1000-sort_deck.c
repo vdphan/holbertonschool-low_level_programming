@@ -1,5 +1,11 @@
 #include "deck.h"
-
+/**
+ * compare - compare two cards value and kind.
+ * @a: first card.
+ * @b: second card.
+ *
+ * Return: the result after compare.
+ */
 int compare(deck_node_t *a, deck_node_t *b)
 {
 	int aval, bval, i;
@@ -36,28 +42,29 @@ int compare(deck_node_t *a, deck_node_t *b)
  */
 void insertion_sort_list(deck_node_t **list)
 {
-	deck_node_t *tmp, *curr;
+	deck_node_t *tmp, *curr, *i;
 
 	if (!list || !*list)
 		return;
-	curr = *list;
-	while (curr && curr->next)
+	i = *list;
+	while (i)
 	{
+		curr = i;
 		while (curr && curr->prev)
 		{
 			tmp = curr;
 			if (compare(tmp, tmp->prev))
 				swap_l(tmp->prev, tmp, list);
 			else
-				break;
+				curr = curr->prev;
 		}
-		curr = curr->next;
+		i = i->next;
 	}
 }
 
 
 /**
- *swap_ll - swaps value between 2 nodes in doubly linked lists.
+ *swap_l - swaps value between 2 nodes in doubly linked lists.
  *@left: pointer of doubly linked lists.
  *@right: pointer of doubly linked lists.
  *@list: pointer of doubly linked lists.
