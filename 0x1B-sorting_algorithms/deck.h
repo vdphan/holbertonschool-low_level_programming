@@ -6,12 +6,19 @@
 #include <stdbool.h>
 #include <string.h>
 
+/**
+ * enum kind_e - different kinds of cards.
+ * @SPADE: spade type.
+ * @HEART: heart type.
+ * @CLUB: club type.
+ * @DIAMOND: diamond type.
+ */
 typedef enum kind_e
 {
 	SPADE = 0,
 	HEART,
 	CLUB,
-    DIAMOND
+	DIAMOND
 } kind_t;
 
 /**
