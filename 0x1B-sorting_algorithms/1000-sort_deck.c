@@ -94,5 +94,7 @@ void swap_l(deck_node_t *left, deck_node_t *right, deck_node_t **list)
  */
 void sort_deck(deck_node_t **deck)
 {
+	if (!deck || !*deck)
+		return;
 	insertion_sort_list(deck);
 }
