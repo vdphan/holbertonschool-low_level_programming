@@ -8,10 +8,10 @@
  */
 void quick_sort_hoare(int *array, size_t size)
 {
-        if (!array || size < 2)
-                return;
+	if (!array || size < 2)
+		return;
 
-        qs_hoare(array, 0, size - 1, size);
+	qs_hoare(array, 0, size - 1, size);
 }
 
 
@@ -25,29 +25,28 @@ void quick_sort_hoare(int *array, size_t size)
  */
 int partition_hoare(int *arr, int low, int high, size_t size)
 {
-        int pivot = arr[high];
-        int i = low - 1, j = high + 1;
+	int pivot = arr[high];
+	int i = low - 1, j = high + 1;
 
-        while (i < j)
-        {
-                do
-                        i++;
-                while (arr[i] < pivot);
-                do
-                        j--;
-                while (arr[j] > pivot);
-                if (i < j)
-                {
-                        swap(&arr[i], &arr[j]);
-                        print_array(arr, size);
-                }
-        }
-        return (i);
+	while (i < j)
+	{
+		do
+			i++;
+		while (arr[i] < pivot);
+		do
+			j--;
+		while (arr[j] > pivot);
+		if (i < j)
+		{
+			swap(&arr[i], &arr[j]);
+			print_array(arr, size);
+		}
+	}
+	return (i);
 }
 
-
 /**
- * qs - quick sort with extra parameter size and recursive way.
+ * qs_hoare - quick sort with extra parameter size and recursive way.
  * @arr: array of integer.
  * @low: starting index of array
  * @high: end index of array
@@ -55,14 +54,14 @@ int partition_hoare(int *arr, int low, int high, size_t size)
  */
 void qs_hoare(int *arr, int low, int high, size_t size)
 {
-        int p;
+	int p;
 
-        if (low < high)
-        {
-                p = partition_hoare(arr, low, high, size);
-                qs_hoare(arr, low, p - 1, size);
-                qs_hoare(arr, p, high, size);
-        }
+	if (low < high)
+	{
+		p = partition_hoare(arr, low, high, size);
+		qs_hoare(arr, low, p - 1, size);
+		qs_hoare(arr, p, high, size);
+	}
 }
 
 /**
