@@ -25,7 +25,7 @@ int compare(deck_node_t *a, deck_node_t *b)
 	}
 	if (a->card->kind == b->card->kind)
 		return (aval > bval);
-	return (a->card->kind > b->card->kind);
+	return (a->card->kind < b->card->kind);
 }
 
 /**
