@@ -45,6 +45,10 @@ void merge(int *array, int *inner, int start, int mid, int end);
 
 void heapify(int arr[], int n, int i, size_t size);
 
+int find_max(int *array, size_t size);
+void rds(int *arr, int size, int sd);
+
 void qs_hoare(int *arr, int low, int high, size_t size);
 int partition_hoare(int *arr, int low, int high, size_t size);
+
 #endif /* SORT_H */
