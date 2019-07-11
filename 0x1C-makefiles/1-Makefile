@@ -1,0 +1,5 @@
+# build an executable named holberton from holberton.c
+CC=gcc
+SRC := $(wildcard *.c)
+all: $(SRC) m.h
+	$(CC) $(SRC) -o holberton
