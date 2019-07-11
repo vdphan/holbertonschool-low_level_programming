@@ -1,5 +1,9 @@
 # build an executable named holberton from holberton.c
+# the compiler: gcc for C program
 CC=gcc
+
+#SRC: all the .c files
 SRC := $(wildcard *.c)
-all: $(SRC) m.h
+
+all: $(SRC)
 	$(CC) $(SRC) -o holberton
