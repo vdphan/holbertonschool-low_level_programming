@@ -3,7 +3,7 @@
 CC=gcc
 
 #SRC: all the .c files
-SRC := $(wildcard *.c)
+SRC := main.c holberton.c
 
 all: $(SRC)
 	$(CC) $(SRC) -o holberton
