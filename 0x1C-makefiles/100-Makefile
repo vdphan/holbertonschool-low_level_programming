@@ -4,7 +4,7 @@ SRC = holberton.c main.c
 OBJ = $(SRC:.c=.o)
 NAME = holberton
 CFLAGS = -Wall -Werror -Wextra -pedantic
-ifneq (,"$(wildcard m.h")
+ifneq ("$(wildcard m.h", "")
 all: $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 .PHONY: clean oclean fclean re
