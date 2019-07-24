@@ -1,29 +1,16 @@
 #include "binary_trees.h"
+#include <math.h>
 /**
- * full - rescursively detects if tree is full
- * @tree: pointer to the root node of the tree to measure the balance factor
- *
- * Return: 1 if full, 0 if not
+ * max - find max of 2 number
+ * @a: first number
+ * @b: second number
+ * Return: the bigger number
  */
-int full(const binary_tree_t *tree)
+int max(int a, int b)
 {
-	if (!tree)
-		return (1);
-	if ((tree->left && !tree->right) || (!tree->left && tree->right))
-		return (0);
-	return (full(tree->left) && full(tree->right));
-}
-/**
- * binary_tree_is_full - checks if a binary tree is full
- * @tree: pointer to the root node of the tree to measure the balance factor
- *
- * Return: 1 if full, 0 otherwise
- */
-int binary_tree_is_full(const binary_tree_t *tree)
-{
-	if (!tree)
-		return (0);
-	return (full(tree));
+	if (a > b)
+		return (a);
+	return (b);
 }
 /**
  * height - helper function measures the height of a binary tree
@@ -32,34 +19,21 @@ int binary_tree_is_full(const binary_tree_t *tree)
  */
 size_t height(const binary_tree_t *tree)
 {
-	int l = 0, r = 0;
-
 	if (!tree)
 		return (-1);
-	l = height(tree->left);
-	r = height(tree->right);
-	if (l > r)
-		return (l + 1);
-	return (r + 1);
+	return (max(height(tree->left), height(tree->right)) + 1);
 }
-
 /**
- * binary_tree_balance_alt - measures the balance factor of a binary tree
- * @tree: pointer to the root node of the tree to measure the balance factor
+ * binary_tree_size - measures the size of a binary tree
+ * @tree: a pointer to the root node of the tree to measure the size
  *
- * Return: balance factor
+ * Return: size of the binary tree
  */
-int binary_tree_balance_alt(const binary_tree_t *tree)
+size_t binary_tree_size(const binary_tree_t *tree)
 {
-	int balancefactor;
-
 	if (!tree)
 		return (0);
-	balancefactor = height(tree->left) - height(tree->right);
-	if (balancefactor == 0)
-		return (1);
-	else
-		return (0);
+	return (binary_tree_size(tree->left) + binary_tree_size(tree->right) + 1);
 }
 /**
  * binary_tree_is_perfect - checks if a binary tree is perfect
@@ -69,7 +43,10 @@ int binary_tree_balance_alt(const binary_tree_t *tree)
  */
 int binary_tree_is_perfect(const binary_tree_t *tree)
 {
+	int sizeoftree;
+
 	if (!tree)
 		return (0);
-	return (binary_tree_is_full(tree) && binary_tree_balance_alt(tree));
+	sizeoftree = binary_tree_size(tree);
+	return ((1 << (height(tree) + 1)) - 1 == sizeoftree);
 }
