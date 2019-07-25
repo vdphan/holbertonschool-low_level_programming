@@ -72,6 +72,8 @@ bst_t *bst_insert(bst_t **tree, int value)
 	bst_t *current = *tree;
 	bst_t *tmp = NULL, *loop = NULL;
 
+	if (!tree)
+		return (NULL);
 	if (!(*tree))
 	{
 		*tree = new(current, value);
