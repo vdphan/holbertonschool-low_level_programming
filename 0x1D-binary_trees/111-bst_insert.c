@@ -19,26 +19,14 @@ binary_tree_t *new(binary_tree_t *parent, int value)
 	new_node->parent = parent;
 	return (new_node);
 }
-void bst_loop(bst_t *current, int value)
-{
-	
-}
 /**
- * bst_insert -  inserts a value in a Binary Search Tree
- * @tree: double pointer to the root node of the BST to insert the value
- * @value: value to store in the node to be inserted
- * Return: a pointer to the created node, or NULL on failure
+ *bst_loop - loop function for insert
+ *@current:pointer to current node
+ *@value: value want to be inserted
+ *Return: the pointer to a node
  */
-bst_t *bst_insert(bst_t **tree, int value)
+bst_t *bst_loop(bst_t *current, int value)
 {
-	bst_t *current = *tree;
-	bst_t *tmp = NULL;
-
-	if (!(*tree))
-	{
-		*tree = new(current, value);
-		return (*tree);
-	}
 	while (current->left || current->right)
 	{
 		if (current->n == value)
@@ -71,10 +59,33 @@ bst_t *bst_insert(bst_t **tree, int value)
 			}
 		}
 	}
-	tmp = new(current, value);
-	if (current->n < value)
-		current->right = tmp;
+	return (current);
+}
+/**
+ * bst_insert -  inserts a value in a Binary Search Tree
+ * @tree: double pointer to the root node of the BST to insert the value
+ * @value: value to store in the node to be inserted
+ * Return: a pointer to the created node, or NULL on failure
+ */
+bst_t *bst_insert(bst_t **tree, int value)
+{
+	bst_t *current = *tree;
+	bst_t *tmp = NULL, *loop = NULL;
+
+	if (!(*tree))
+	{
+		*tree = new(current, value);
+		return (*tree);
+	}
+	loop = bst_loop(current, value);
+	if  (!loop)
+		return (NULL);
+	if (loop->n == value)
+		return (loop);
+	tmp = new(loop, value);
+	if (loop->n < value)
+		loop->right = tmp;
 	else
-		current->left = tmp;
+		loop->left = tmp;
 	return (tmp);
 }
