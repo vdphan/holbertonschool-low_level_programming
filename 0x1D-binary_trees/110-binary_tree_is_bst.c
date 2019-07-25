@@ -13,8 +13,8 @@ int bst(const binary_tree_t *tree, int min, int max)
 		return (1);
 	if (tree->n < min || tree->n > max)
 		return (0);
-	return (bst(tree->left, min, tree->n) &&
-		bst(tree->right, tree->n, max));
+	return (bst(tree->left, min, tree->n - 1) &&
+		bst(tree->right, tree->n + 1, max));
 }
 /**
  * binary_tree_is_bst - checks if a binary tree is a valid Binary Search Tree
