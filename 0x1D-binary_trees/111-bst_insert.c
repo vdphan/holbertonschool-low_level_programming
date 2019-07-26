@@ -27,43 +27,36 @@ binary_tree_t *new(binary_tree_t *parent, int value)
  */
 bst_t *bst_loop(bst_t *current, int value)
 {
-	bst_t *cur = NULL;
+	bst_t *new_node = NULL;
 
-	while (current->left || current->right)
+	while (current)
 	{
 		if (current->n == value)
 			return (NULL);
-		if (current->left && current->right)
+		if (current->n > value)
 		{
-			if (current->n < value)
-				current = current->right;
-			else if (current->n > value)
-				current = current->left;
-		}
-		else if (current->left && !current->right)
-		{
-			if (current->n > value)
+			if (current->left)
 				current = current->left;
 			else
 			{
-				cur = new(current, value);
-				if (!cur)
+				new_node = new(current, value);
+				if (!new_node)
 					return (NULL);
-				current->right = cur;
-				return (current->right);
+				current->left = new_node;
+				return (current->left);
 			}
 		}
-		else if (!current->left && current->right)
+		else
 		{
-			if (current->n < value)
+			if (current->right)
 				current = current->right;
 			else
 			{
-				cur = new(current, value);
-				if (!cur)
+				new_node = new(current, value);
+				if (!new_node)
 					return (NULL);
-				current->left = cur;
-				return (current->left);
+				current->right = new_node;
+				return (current->right);
 			}
 		}
 	}
@@ -78,7 +71,7 @@ bst_t *bst_loop(bst_t *current, int value)
 bst_t *bst_insert(bst_t **tree, int value)
 {
 	bst_t *current =  NULL;
-	bst_t *tmp = NULL, *loop = NULL;
+	bst_t *tmp = NULL;
 
 	if (!tree)
 		return (NULL);
@@ -91,19 +84,5 @@ bst_t *bst_insert(bst_t **tree, int value)
 		return (*tree);
 	}
 	current = *tree;
-	if (current->n == value)
-		return (NULL);
-	loop = bst_loop(current, value);
-	if  (!loop)
-		return (NULL);
-	if (loop->n == value)
-		return (loop);
-	tmp = new(loop, value);
-	if (!tmp)
-		return (NULL);
-	if (loop->n < value)
-		loop->right = tmp;
-	else
-		loop->left = tmp;
-	return (tmp);
+	return (bst_loop(current, value));
 }
