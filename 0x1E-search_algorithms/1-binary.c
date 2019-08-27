@@ -11,7 +11,7 @@ int binary_search(int *array, size_t size, int value)
 {
 	uint i = 0, high = 0, low = 0, mid = 0;
 
-	if (!array)
+	if (!array || size == 0)
 		return (-1);
 	high = size - 1;
 	while (high >= low)
