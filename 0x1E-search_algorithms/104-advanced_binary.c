@@ -4,19 +4,23 @@
  * @array: Target array
  * @low: Left index of @array
  * @high: Right index of @array
+ * @value: the value to search for
  */
-void printer(int *array, size_t low, size_t high)
+void printer(int *array, size_t low, size_t high, int value)
 {
 	size_t i;
 
-	printf("Searching in array: ");
-	for (i = low; i <= high; i++)
+	if (low != high || array[low] != value)
 	{
-		printf("%d", array[i]);
-		if (i == high)
-			printf("\n");
-		else
-			printf(", ");
+		printf("Searching in array: ");
+		for (i = low; i <= high; i++)
+		{
+			printf("%d", array[i]);
+			if (i == high)
+				printf("\n");
+			else
+				printf(", ");
+		}
 	}
 }
 /**
@@ -32,10 +36,10 @@ int recursive_binary(int *array, size_t low, size_t high, int value)
 {
 	int mid = 0;
 
+	printer(array, low, high, value);
+	mid = (high + low) / 2;
 	if (high > low)
 	{
-		printer(array, low, high);
-		mid = (high + low) / 2;
 		if (array[mid] > value)
 			return (recursive_binary(array, low, mid - 1, value));
 		else if (array[mid] < value)
@@ -45,7 +49,6 @@ int recursive_binary(int *array, size_t low, size_t high, int value)
 	}
 	if (array[low] == value)
 		return (low);
-	printf("Searching in array: %d\n", array[low]);
 	return (-1);
 }
 /**
