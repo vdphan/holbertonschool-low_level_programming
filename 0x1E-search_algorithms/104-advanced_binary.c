@@ -1,5 +1,25 @@
 #include "search_algos.h"
 /**
+ * printer - Prints an array
+ * @array: Target array
+ * @low: Left index of @array
+ * @high: Right index of @array
+ */
+void printer(int *array, size_t low, size_t high)
+{
+	size_t i;
+
+	printf("Searching in array: ");
+	for (i = low; i <= high; i++)
+	{
+		printf("%d", array[i]);
+		if (i == high)
+			printf("\n");
+		else
+			printf(", ");
+	}
+}
+/**
  * recursive_binary - a recursive function that searches for a value
  * in a sorted array of integers using the Binary search algorithm
  * @array: pointer to the first element of the array to search in
@@ -11,18 +31,10 @@
 int recursive_binary(int *array, size_t low, size_t high, int value)
 {
 	int mid = 0;
-	size_t i = 0;
 
 	if (high > low)
 	{
-		printf("Searching in array: ");
-		for (i = low; i <= high; i++)
-		{
-			if (i != low)
-				printf(", ");
-			printf("%d", array[i]);
-		}
-		printf("\n");
+		printer(array, low, high);
 		mid = (high + low) / 2;
 		if (array[mid] > value)
 			return (recursive_binary(array, low, mid - 1, value));
@@ -35,7 +47,7 @@ int recursive_binary(int *array, size_t low, size_t high, int value)
 		return (low);
 	printf("Searching in array: %d\n", array[low]);
 	return (-1);
-} 
+}
 /**
  * advanced_binary - a function that searches for a value
  * in a sorted array of integers using the Binary search algorithm
