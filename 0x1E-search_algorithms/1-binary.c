@@ -9,7 +9,7 @@
  */
 int binary_search(int *array, size_t size, int value)
 {
-	uint i = 0, high = 0, low = 0, mid = 0;
+	size_t i = 0, high = 0, low = 0, mid = 0;
 
 	if (!array || size == 0)
 		return (-1);
@@ -21,7 +21,7 @@ int binary_search(int *array, size_t size, int value)
 		{
 			if (i != low)
 				printf(", ");
-			printf("%d", i);
+			printf("%lu", i);
 		}
 		printf("\n");
 		mid = (high + low) / 2;
