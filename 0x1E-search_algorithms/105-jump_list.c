@@ -26,13 +26,13 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 			block--;
 		}
 		block = sqrt(size);
-		printf("Value checked array[%lu] = [%d]\n", temp->index, temp->n);
+		printf("Value checked at index [%lu] = [%d]\n", temp->index, temp->n);
 	}
 	printf("Value found between indexes [%lu] and [%lu]\n", curr->index,
 	       temp->index);
 	while (curr->index <= temp->index)
 	{
-		printf("Value checked array[%lu] = [%d]\n", curr->index, curr->n);
+		printf("Value checked at index [%lu] = [%d]\n", curr->index, curr->n);
 		if (curr->n == value)
 			return (curr);
 		if (!curr->next)
